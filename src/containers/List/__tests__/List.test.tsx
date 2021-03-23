@@ -11,6 +11,12 @@ const setupShallow = () => (
 );
 
 describe('List', () => {
+  it('should render a `Navbar` component', () => {
+    const component = setupShallow();
+    const navbar = component.find(Styled.Navbar);
+    expect(navbar.length).toBe(1);
+  });
+
   it('should render a `Container` component', () => {
     const component = setupShallow();
     const container = component.find(Styled.Container);

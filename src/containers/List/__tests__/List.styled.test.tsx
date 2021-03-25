@@ -9,6 +9,14 @@ describe('List Styled Components', () => {
       expect(Styled.Container).toBeTruthy();
     });
 
+    it('should have a `Header` component', () => {
+      expect(Styled.Header).toBeTruthy();
+    });
+
+    it('should have a `List` component', () => {
+      expect(Styled.List).toBeTruthy();
+    });
+
     it('should have a `Navbar` component', () => {
       expect(Styled.Navbar).toBeTruthy();
     });

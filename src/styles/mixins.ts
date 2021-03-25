@@ -1,12 +1,7 @@
 import { css } from 'styled-components';
 
-const grid = css`
+const container = css`
   position: relative;
-  display: grid;
-  grid-template-columns: repeat(12,1fr);
-  grid-column-gap: 20px;
-  grid-row-gap: 20px;
-  justify-items: stretch;
   box-sizing: border-box;
   margin-right: auto;
   margin-left: auto;
@@ -16,7 +11,16 @@ const grid = css`
   width: 100%;
 `;
 
+const grid = css`
+  display: grid;
+  grid-template-columns: repeat(12,1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  justify-items: stretch;
+`;
+
 const mixins = {
+  container,
   grid
 };
 

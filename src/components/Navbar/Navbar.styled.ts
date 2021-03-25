@@ -9,13 +9,12 @@ const Wrapper = styled.header`
 `;
 
 const Container = styled.div`
-  ${mixins.grid}
+  ${mixins.container}
   padding-top: 20px;
   padding-bottom: 20px;
 `;
 
 const Title = styled.h1`
-  grid-column: span 12;
   margin: 0;
 `;
 

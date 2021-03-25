@@ -42,7 +42,6 @@ describe('Navbar Styled Components', () => {
     it('should have the expected style rules', () => {
       const component = renderer.create(<Styled.Title />).toJSON();
 
-      expect(component).toHaveStyleRule('grid-column', 'span 12');
       expect(component).toHaveStyleRule('margin', '0');
     });
   });

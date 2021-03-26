@@ -38,4 +38,18 @@ describe('theme', () => {
       expect(theme.colors.red).toBe('#eb4a46');
     });
   });
+
+  describe('responsive', () => {
+    it('should have a `isMobile` responsive variable', () => {
+      expect(theme.responsive.isMobile).toBe('@media only screen and (max-width: 768px)');
+    });
+
+    it('should have a `isTablet` responsive variable', () => {
+      expect(theme.responsive.isTablet).toBe('@media only screen and (min-width: 768px) and (max-width: 992px)');
+    });
+
+    it('should have a `isDesktop` responsive variable', () => {
+      expect(theme.responsive.isDesktop).toBe('@media only screen and (min-width: 992px)');
+    });
+  });
 });

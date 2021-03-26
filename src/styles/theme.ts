@@ -13,6 +13,12 @@ const theme = {
     black0: '#ffffff',
 
     red: '#eb4a46'
+  },
+
+  responsive: {
+    isMobile: '@media only screen and (max-width: 768px)',
+    isTablet: '@media only screen and (min-width: 768px) and (max-width: 992px)',
+    isDesktop: '@media only screen and (min-width: 992px)'
   }
 };
 

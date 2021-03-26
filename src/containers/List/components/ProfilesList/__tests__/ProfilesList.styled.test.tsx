@@ -6,6 +6,9 @@ import theme from '../../../../../styles/theme';
 import Styled from '../ProfilesList.styled';
 
 describe('ProfilesList Styled Components', () => {
+  const mobileMedia = theme.responsive.isMobile;
+  const mobileMediaQuery = mobileMedia.replace('@media ', '');
+
   describe('exported components', () => {
     it('should have a `Error` component', () => {
       expect(Styled.Error).toBeTruthy();
@@ -46,8 +49,6 @@ describe('ProfilesList Styled Components', () => {
     it('should have the expected style rules', () => {
       const component = renderer.create(<Styled.List />).toJSON();
 
-      expect(component).toHaveStyleRule('display', 'flex');
-      expect(component).toHaveStyleRule('flex-direction', 'column');
       expect(component).toHaveStyleRule('margin', '0');
       expect(component).toHaveStyleRule('padding', '20px 0');
     });
@@ -57,6 +58,7 @@ describe('ProfilesList Styled Components', () => {
     it('should have the expected style rules', () => {
       const component = renderer.create(<Styled.ListItem />).toJSON();
 
+      expect(component).toHaveStyleRule('grid-column', 'span 6');
       expect(component).toHaveStyleRule('box-shadow', '0px 4px 10px rgba(0,0,0,0.1)');
       expect(component).toHaveStyleRule('overflow', 'hidden');
       expect(component).toHaveStyleRule('border-radius', '4px');
@@ -65,7 +67,9 @@ describe('ProfilesList Styled Components', () => {
       expect(component).toHaveStyleRule('cursor', 'pointer');
       expect(component).toHaveStyleRule('transition', '0.4s');
 
-      expect(component).toHaveStyleRule('box-shadow', '0 2px 8px rgba(0,0,0,0.05)', { modifier: ':hover'});
+      expect(component).toHaveStyleRule('grid-column', 'span 12', { media: mobileMediaQuery });
+
+      expect(component).toHaveStyleRule('box-shadow', '0 2px 8px rgba(0,0,0,0.05)', { modifier: ':hover' });
     });
   });
 

@@ -11,13 +11,12 @@ const Error = styled.p`
 
 const List = styled.ul`
   ${mixins.grid}
-  display: flex;
-  flex-direction: column;
   margin: 0;
   padding: 20px 0;
 `;
 
 const ListItem = styled.li`
+  grid-column: span 6;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   border-radius: 4px;
@@ -25,6 +24,10 @@ const ListItem = styled.li`
   list-style-type: none;
   cursor: pointer;
   transition: 0.4s;
+
+  ${theme.responsive.isMobile} {
+    grid-column: span 12;
+  }
 
   &:hover {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);

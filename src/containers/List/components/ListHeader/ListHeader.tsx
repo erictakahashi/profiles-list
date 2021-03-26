@@ -22,9 +22,10 @@ const ListHeader: FC<IListHeaderProps> = (props: IListHeaderProps) => {
         <Styled.Count>{count}</Styled.Count>
       </Styled.Title>
 
-      <Styled.CreateButton>
+      {/* Removed until the functionality is ready. */}
+      {/* <Styled.CreateButton>
         New Profile
-      </Styled.CreateButton>
+      </Styled.CreateButton> */}
     </Styled.Header>
   );
 };

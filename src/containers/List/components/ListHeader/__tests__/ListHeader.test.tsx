@@ -36,7 +36,7 @@ describe('ListHeader', () => {
     expect(countChildren).toEqual(totalCount);
   });
 
-  it('should render a `CreateButton` component', () => {
+  it.skip('should render a `CreateButton` component', () => {
     const component = setupShallow();
     const createButton = component.find(Styled.CreateButton);
     expect(createButton.length).toBe(1);

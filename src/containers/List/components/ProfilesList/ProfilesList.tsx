@@ -1,4 +1,7 @@
-import { FC } from 'react';
+import { FC, useCallback } from 'react';
+import { useHistory } from 'react-router-dom';
+
+import paths from '../../../../constants/paths';
 
 import Styled from './ProfilesList.styled';
 
@@ -52,14 +55,22 @@ export const ListItem: FC<IListItemProps> = (props: IListItemProps) => {
   const { profile } = props;
 
   const {
-    cpf,
+    cpf = '',
     email,
     name,
     phone
   } = profile || {};
 
+  const {
+    push
+  } = useHistory() || {};
+
+  const handleClicked = useCallback(() => (
+    push(paths.profile.replace(':id', cpf))
+  ), [cpf, push]);
+
   return (
-    <Styled.ListItem>
+    <Styled.ListItem onClick={handleClicked}>
       <Styled.Title>{name}</Styled.Title>
       <Styled.Text><Styled.Label>Email:</Styled.Label> {email}</Styled.Text>
       <Styled.Text><Styled.Label>CPF:</Styled.Label> {cpf}</Styled.Text>

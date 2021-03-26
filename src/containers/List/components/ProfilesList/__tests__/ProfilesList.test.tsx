@@ -1,4 +1,7 @@
+import * as ReactRouterDom from 'react-router-dom';
 import { shallow } from 'enzyme';
+
+import paths from '../../../../../constants/paths';
 
 import ProfilesList, { ListItem } from '../ProfilesList';
 import Styled from '../ProfilesList.styled';
@@ -15,11 +18,27 @@ const setupShallow = (props?: object) => shallow(<ProfilesList {...props} />);
  */
 const setupListItem = (props?: object) => shallow(<ListItem {...props} />);
 
+const mockPush = jest.fn();
+jest.mock('react-router-dom', () => ({
+  useHistory: () => {
+    const push = () => mockPush();
+    return { push };
+  },
+}));
+
 describe('ProfilesList', () => {
   const profiles = [
     { cpf: 'cpfA', email: 'emailA', name: 'nameA', phone: 'phoneA' },
     { cpf: 'cpfB', email: 'emailB', name: 'nameB', phone: 'phoneB' }
   ];
+
+  afterAll(() => {
+    jest.resetAllMocks();
+  });
+
+  afterAll(() => {
+    jest.clearAllMocks();
+  });
 
   describe('without `profiles`', () => {
     it('should render an `Error` component', () => {
@@ -87,6 +106,16 @@ describe('ProfilesList', () => {
       const component = setupListItem({ profile });
       const label = component.find(Styled.Label);
       expect(label.length).toBe(3);
+    });
+
+    describe('onClick', () => {
+      it('should call history `push`', () => {
+        const component = setupListItem({ profile });
+        const listItem = component.find(Styled.ListItem);
+        const firstListItem = listItem.at(0);
+        firstListItem.simulate('click');
+        expect(mockPush).toHaveBeenCalled();
+      });
     });
   });
 });
